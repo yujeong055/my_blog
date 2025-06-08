@@ -1,4 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Blog
+
+개인 블로그 프로젝트입니다. Next.js와 TypeScript를 사용하여 개발되었습니다.
+
+## 주요 기능
+
+- 마크다운 기반의 블로그 포스팅
+- 댓글 시스템
+- 사용자 인증 (Clerk)
+- 데이터베이스 (Supabase)
+- 반응형 디자인
+
+## 기술 스택
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Clerk (인증)
+- Supabase (데이터베이스)
+- React Markdown
+
+## 시작하기
+
+개발 서버를 실행하려면:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
