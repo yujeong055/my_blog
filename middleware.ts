@@ -1,8 +1,8 @@
-import { createMiddleware } from "@clerk/nextjs/server";
+import { authMiddleware } from "@clerk/nextjs/server";
  
 // Clerk 미들웨어 설정
 // public 경로는 인증이 필요 없음
-export default createMiddleware({
+export default authMiddleware({
   publicRoutes: [
     "/",
     "/blog",
