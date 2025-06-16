@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 export function Header() {
   return (
@@ -16,9 +17,14 @@ export function Header() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="ghost" asChild>
-            <Link href="/auth/login">로그인</Link>
-          </Button>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          <SignedOut>
+            <Button variant="ghost" asChild>
+              <SignInButton mode="modal">로그인</SignInButton>
+            </Button>
+          </SignedOut>
         </div>
       </div>
     </header>
