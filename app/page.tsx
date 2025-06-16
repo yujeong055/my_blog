@@ -1,85 +1,85 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 className="text-4xl font-bold mb-4">Welcome to My Blog</h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300">A place for sharing thoughts and ideas.</p>
+  const blogPosts = [
+    {
+      id: 1,
+      title: "온라인 광평이와 당숙모",
+      date: "2025-06-16",
+      image: "/images/cat.jpg",
+      excerpt: "삶과 비행기 매카닉, 그리고 외할머니의 따스한 사랑..."
+    },
+    {
+      id: 2,
+      title: "AI-agent",
+      date: "2025-06-16",
+      image: "/images/ai.jpg",
+      excerpt: "인공지능 에이전트의 발전과 미래..."
+    },
+    {
+      id: 3,
+      title: "Next.js로 블로그 만들기",
+      date: "2025-06-15",
+      image: "/images/ai.jpg",
+      excerpt: "Next.js와 Supabase를 사용하여 모던한 블로그를 구축하는 방법..."
+    },
+    {
+      id: 4,
+      title: "프로그래밍의 즐거움",
+      date: "2025-06-14",
+      image: "/images/cat.jpg",
+      excerpt: "코딩을 통해 문제를 해결하고 새로운 것을 만드는 즐거움..."
+    }
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <main className="max-w-6xl mx-auto px-4 py-12">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+            Welcome to My Blog
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300">
+            블로그, JavaScript, Next.js로 나의 생각과 삶을 공유하는 공간입니다.
+          </p>
         </div>
+
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100">최신 게시물</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            {blogPosts.map(post => (
+              <div key={post.id} className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                <div className="aspect-w-16 aspect-h-9 relative h-48">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="mb-2">
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{post.date}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">{post.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{post.excerpt}</p>
+                  <Link 
+                    href={`/blog/${post.id}`}
+                    className="inline-flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                  >
+                    자세히 보기
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
