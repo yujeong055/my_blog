@@ -11,19 +11,28 @@ export function Header() {
             AI 학습 블로그
           </Link>
           <nav className="hidden md:flex gap-4">
-            <Link href="/blog">블로그</Link>
-            <Link href="/blog/categories">카테고리</Link>
-            <Link href="/search">검색</Link>
+            <Link href="/" className="hover:text-blue-600">홈</Link>
+            <Link href="/#latest-posts" className="hover:text-blue-600">최신글</Link>
+            <Link href="/#about" className="hover:text-blue-600">소개</Link>
           </nav>
         </div>
         <div className="flex items-center gap-4">
           <SignedIn>
-            <UserButton afterSignOutUrl="/" />
+            <UserButton 
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: "w-10 h-10"
+                }
+              }}
+            />
           </SignedIn>
           <SignedOut>
-            <Button variant="ghost" asChild>
-              <SignInButton mode="modal">로그인</SignInButton>
-            </Button>
+            <SignInButton mode="modal">
+              <Button variant="outline">
+                로그인
+              </Button>
+            </SignInButton>
           </SignedOut>
         </div>
       </div>
