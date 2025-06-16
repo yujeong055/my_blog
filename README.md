@@ -1,67 +1,90 @@
-# My Blog
+# My Personal Blog
 
-개인 블로그 프로젝트입니다. Next.js와 TypeScript를 사용하여 개발되었습니다.
+Next.js와 TypeScript를 기반으로 한 현대적인 개인 블로그 프로젝트입니다.
 
-## 주요 기능
+## 📚 프로젝트 개요
 
-- 마크다운 기반의 블로그 포스팅
-- 댓글 시스템
-- 사용자 인증 (Clerk)
-- 데이터베이스 (Supabase)
-- 반응형 디자인
+이 블로그는 AI 학습과 개발 경험을 공유하기 위한 플랫폼으로, 최신 웹 기술을 활용하여 구축되었습니다.
 
-## 기술 스택
+## 🛠 기술 스택
 
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- Clerk (인증)
-- Supabase (데이터베이스)
-- React Markdown
+### Frontend
+- **Framework**: Next.js 15.3.2
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/ui
+- **Font**: Geist Sans & Geist Mono
 
-## 시작하기
+### Backend
+- **Database**: Supabase
+- **Authentication**: Clerk
+- **API**: Next.js API Routes
 
-개발 서버를 실행하려면:
+### 개발 도구
+- **Version Control**: Git
+- **Code Quality**: ESLint
+- **Formatting**: Prettier
 
+## 🌟 주요 기능
+
+- 💡 반응형 디자인
+- 📝 마크다운 기반 블로그 포스팅
+- 💬 댓글 시스템
+- 🔐 사용자 인증
+- 🔍 게시물 검색
+- 🏷 카테고리 분류
+- 📊 데이터 분석 (Jupyter Notebook 통합)
+
+## 🚀 시작하기
+
+1. 저장소 클론:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yujeong055/my-blog.git
+cd my-blog
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. 의존성 설치:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. 환경 변수 설정:
+`.env.local` 파일을 생성하고 필요한 환경 변수를 설정하세요:
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. 개발 서버 실행:
+```bash
+npm run dev
+```
 
-## Learn More
+5. http://localhost:3000 접속
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 프로젝트 구조
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+my-blog/
+├── app/               # Next.js 13+ App Router
+├── components/        # 재사용 가능한 컴포넌트
+│   ├── blog/         # 블로그 관련 컴포넌트
+│   ├── common/       # 공통 컴포넌트
+│   └── ui/           # UI 컴포넌트
+├── lib/              # 유틸리티 함수 및 설정
+├── public/           # 정적 파일
+└── types/            # TypeScript 타입 정의
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔧 설정
 
-## Deploy on Vercel
+- **Next.js**: App Router 및 서버 컴포넌트 사용
+- **TypeScript**: 엄격한 타입 체크 적용
+- **Tailwind**: JIT 모드 활성화
+- **ESLint**: 코드 품질 관리
+- **Prettier**: 일관된 코드 스타일 유지
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 라이센스
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

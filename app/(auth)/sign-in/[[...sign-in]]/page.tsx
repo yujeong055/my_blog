@@ -1,17 +1,9 @@
-import { SignIn } from "@clerk/nextjs";
+import { LoginForm } from "@/components/auth/login-form";
 
 export default function SignInPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <SignIn
-        appearance={{
-          elements: {
-            formButtonPrimary: 
-              "bg-primary text-primary-foreground hover:bg-primary/90",
-            card: "bg-background",
-          },
-        }}
-      />
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <LoginForm />
     </div>
   );
 }
