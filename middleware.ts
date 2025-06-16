@@ -1,21 +1,33 @@
-import { authMiddleware } from "@clerk/nextjs/server";
- 
-// Clerk 미들웨어 설정
-// public 경로는 인증이 필요 없음
-export default authMiddleware({
-  publicRoutes: [
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export function middleware(request: NextRequest) {
+  // 공개 경로 목록
+  const publicPaths = [
     "/",
     "/blog",
-    "/blog/(.*)",  // 블로그 게시물 조회
-    "/api/public/(.*)",  // 공개 API 엔드포인트
-    "/categories/(.*)",  // 카테고리별 게시물 목록
-  ],
-  ignoredRoutes: [
-    "/api/webhook/(.*)",  // Webhook은 인증 제외
-  ],
-});
- 
-// Clerk 미들웨어가 적용되어야 하는 경로 설정
+    "/blog/(.*)",
+    "/api/public/(.*)",
+    "/categories/(.*)",
+  ];
+
+  // 현재 경로가 공개 경로인지 확인
+  const isPublicPath = publicPaths.some((path) => {
+    if (path.includes("(.*)")) {
+      const pathWithoutWildcard = path.replace("(.*)", "");
+      return request.nextUrl.pathname.startsWith(pathWithoutWildcard);
+    }
+    return request.nextUrl.pathname === path;
+  });
+
+  // 공개 경로이거나 webhook 경로인 경우 접근 허용
+  if (isPublicPath || request.nextUrl.pathname.startsWith('/api/webhook/')) {
+    return NextResponse.next();
+  }
+
+  return NextResponse.next();
+}
+
 export const config = {
-  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };
